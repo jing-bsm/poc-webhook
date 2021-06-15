@@ -1,0 +1,17 @@
+name: Greetings
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+    - uses: github-actions-up-and-running/pr-comment@v1.0.1
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        issue-message: 'You said: ${{ github.event.issue.body }} with title: ${{ github.event.issue.title }}'
+
