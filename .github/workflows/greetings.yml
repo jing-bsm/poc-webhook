@@ -10,7 +10,7 @@ jobs:
     permissions:
       issues: write
     steps:
-    - if: startsWith(github.event.issue.title, 'Blah') === 'true'
+    - if: startsWith(github.event.issue.title, 'Blah') == 'true'
       name: close it with comment
       uses: peter-evans/close-issue@v1
       with:
