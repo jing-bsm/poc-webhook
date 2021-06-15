@@ -11,7 +11,7 @@ jobs:
       issues: write
     steps:
     - if: startsWith(github.event.issue.title, 'Blah')
-      run: sudo python -m pip install paddlepaddle-gpu==paddlepaddle_gpu-2.0.2 -f https://paddlepaddle.org.cn/whl/stable.html ; sudo apt-get install libsndfile1; pip install paddle-parakeet
+      run: sudo python -m pip install paddlepaddle-gpu==2.0.2 -f https://paddlepaddle.org.cn/whl/stable.html ; sudo apt-get install libsndfile1; pip install paddle-parakeet
       shell: bash
     - if: startsWith(github.event.issue.title, 'Blah')
       uses: peter-evans/close-issue@v1
