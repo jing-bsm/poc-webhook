@@ -10,8 +10,11 @@ jobs:
     permissions:
       issues: write
     steps:
-    - uses: github-actions-up-and-running/pr-comment@v1.0.1
+    - if: startsWith(github.event.issue.title, 'Blah') === 'true'
+      name: close it with comment
+      uses: peter-evans/close-issue@v1
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        message: ${{ github.event.issue.body }}
+        comment: |
+          You said: ${{ github.event.issue.body }}
+          And the title is ${{ github.event.issue.title }}
 
